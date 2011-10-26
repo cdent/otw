@@ -7,6 +7,15 @@ clean:
 	rm $(SOURCES_DIR)/*.js || true
 	find . -name "*.pyc" -exec rm {} \; || true
 
+dev:
+	@(./otwinstance dev && \
+	cd dev && \
+	ln -s ../mangler.py && \
+	ln -s ../tiddlywebplugins && \
+	echo "import mangler" >> tiddlywebconfig.py && \
+	twanager bag stuff </dev/null && \
+	echo "start up the server and visit http://0.0.0.0:8080/bags/stuff/tiddlers.otw")
+
 resources: remotes
 	cook $$PWD/lib/otw.recipe -d $$PWD/$(RESOURCES_DIR) -o otw.html
 	cook $$PWD/lib/otw.js.recipe -d $$PWD/$(SOURCES_DIR) -o otw.js.js -j
