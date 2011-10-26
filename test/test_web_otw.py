@@ -20,7 +20,7 @@ def setup_module(module):
     wsgi_intercept.add_wsgi_intercept('0.0.0.0', 8000, app_fn)
 
     if os.path.exists('store'):
-        shutil.rmdir('store')
+        shutil.rmtree('store')
 
     store = get_store(config)
     module.http = httplib2.Http()
@@ -41,3 +41,9 @@ def test_get_wiki():
 
     response['status'] == '200'
     assert 'otw.js' in content
+
+    response, content = http.request(
+            'http://0.0.0.0:8000/bags/stuff/tiddlers.otw?download=file.html')
+
+    response['status'] == '200'
+    assert 'otw.js' not in content

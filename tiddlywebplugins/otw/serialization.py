@@ -42,6 +42,10 @@ class Serialization(WikiSerialization):
         """
         Read base_tiddlywiki from its location.
         """
+        download = self.environ['tiddlyweb.query'].get('download', [None])[0]
+        if download:
+            return WikiSerialization._get_wiki(self)
+
         global WIKI
         if not WIKI:
             base_tiddlywiki = open(
