@@ -1,0 +1,26 @@
+(for online tiddlywiki)
+
+See https://github.com/jdlrobson/tiddlywebwikii for jon's version
+on which this is based. I made a different one because I was struggling
+to get my head around the concepts, fix the issues, and otherwise know
+what's up. Out of the two should come the correct thing, either this
+one will inform that one, or if this one becomes the thing, then
+this one would not be possible without that one as the guide.
+
+The differences are or will be:
+
+are
+* cooking of the tiddlywiki is local to this repo, so it is easier
+to mess about with removing or adding pieces of tiddlywiki
+* ditto for the pieces of javascript, and the overrides
+* fixed a big bug in how the WIKI global was being used
+(after the first wiki all the following wiki's would have the
+same host info)
+* no concept of a "latest" build, there is just this build
+* more integration with tiddlywebwiki
+
+will be
+* proper handling of the download arg
+* more stuff stripped away
+* integration with lazytiddlywebwiki
+* tests (oops)
