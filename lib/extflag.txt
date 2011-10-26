@@ -1,0 +1,4 @@
+@@otwconfig@@
+<script type="text/javascript" src="@@bagpath@@/jquery.js"></script>
+<script type="text/javascript" src="@@bagpath@@/jQuery.twStylesheet.js"></script>
+<script type="text/javascript" src="@@bagpath@@/otw.js"></script>

@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+"""
+TiddlyWebWiki instantiation
+"""
+
+import sys
+
+from tiddlyweb.util import std_error_message
+from tiddlywebplugins.instancer.util import spawn
+
+from tiddlywebplugins.otw import instance as instance_module
+from tiddlywebplugins.otw.config import config as init_config
+
+
+def main(args):
+    args = [unicode(arg, 'UTF-8') for arg in args]
+    try:
+        instance_path = args[1]
+    except IndexError:
+        std_error_message('ERROR: missing instance directory parameter')
+        return False
+    spawn(instance_path, init_config, instance_module)
+    return True
+
+
+if __name__ == '__main__':
+    status = not main(sys.argv)
+    sys.exit(status)

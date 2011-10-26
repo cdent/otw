@@ -1,0 +1,4 @@
+recipe: https://raw.github.com/TiddlyWiki/tiddlywiki/master/html/split.recipe
+recipe: https://raw.github.com/TiddlyWiki/tiddlywiki/master/shadows/split.recipe
+version: https://raw.github.com/TiddlyWiki/tiddlywiki/master/js/Version.js
+jsext: extflag.txt
