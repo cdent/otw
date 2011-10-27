@@ -21,7 +21,6 @@ js: https://raw.github.com/TiddlyWiki/tiddlywiki/master/js/Filters.js
 js: https://raw.github.com/TiddlyWiki/tiddlywiki/master/js/TiddlerFields.js
 js: https://raw.github.com/TiddlyWiki/tiddlywiki/master/js/Story.js
 js: https://raw.github.com/TiddlyWiki/tiddlywiki/master/js/Import.js
-js: https://raw.github.com/TiddlyWiki/tiddlywiki/master/js/Upgrade.js
 js: https://raw.github.com/TiddlyWiki/tiddlywiki/master/js/Sync.js
 js: https://raw.github.com/TiddlyWiki/tiddlywiki/master/js/Manager.js
 js: https://raw.github.com/TiddlyWiki/tiddlywiki/master/js/Messages.js
