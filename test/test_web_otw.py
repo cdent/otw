@@ -33,17 +33,32 @@ def test_get_wiki():
     response, content = http.request(
             'http://0.0.0.0:8000/bags/stuff/tiddlers.wiki')
 
-    response['status'] == '200'
+    assert response['status'] == '200'
     assert 'otw.js' not in content
 
     response, content = http.request(
             'http://0.0.0.0:8000/bags/stuff/tiddlers.otw')
 
-    response['status'] == '200'
+    assert response['status'] == '200'
     assert 'otw.js' in content
 
     response, content = http.request(
             'http://0.0.0.0:8000/bags/stuff/tiddlers.otw?download=file.html')
 
-    response['status'] == '200'
+    assert response['status'] == '200'
     assert 'otw.js' not in content
+
+def test_tiddler_presence():
+    tiddler = Tiddler('dogma', 'stuff')
+    tiddler.text = 'Ran over'
+    store.put(tiddler)
+
+    response, content = http.request(
+            'http://0.0.0.0:8000/bags/stuff/tiddlers.otw')
+    assert response['status'] == '200'
+    assert 'Ran over' not in content
+
+    response, content = http.request(
+            'http://0.0.0.0:8000/bags/stuff/tiddlers.otw?download=file.html')
+    assert response['status'] == '200'
+    assert 'Ran over' in content

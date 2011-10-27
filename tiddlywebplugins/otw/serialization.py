@@ -6,6 +6,8 @@ The missing tiddlers are placed in a tiddler called LazyTiddlers.
 """
 
 from tiddlywebwiki.serialization import (
+        Serialization as CoreSerialization)
+from tiddlywebplugins.lazy.serialization import (
         Serialization as WikiSerialization)
 from tiddlyweb.web.util import tiddler_etag, get_route_value, server_base_url
 import simplejson
@@ -13,6 +15,13 @@ import simplejson
 WIKI = ''
 
 class Serialization(WikiSerialization):
+
+    def _create_tiddlers(self, title, tiddlers):
+        download = self.environ['tiddlyweb.query'].get('download', [None])[0]
+        if download:
+            return CoreSerialization._create_tiddlers(self, title, tiddlers)
+        else:
+            return WikiSerialization._create_tiddlers(self, title, tiddlers)
 
     def _get_container(self):
         routing_args = self.environ.get('wsgiorg.routing_args', ([], {}))[1]
@@ -44,7 +53,7 @@ class Serialization(WikiSerialization):
         """
         download = self.environ['tiddlyweb.query'].get('download', [None])[0]
         if download:
-            return WikiSerialization._get_wiki(self)
+            return CoreSerialization._get_wiki(self)
 
         global WIKI
         if not WIKI:
